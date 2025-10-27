@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SLR Academy - Logistics & Supply Chain Courses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?display=swap&family=Manrope:wght@400;500;700;800">
+    <script src="https://cdn.tailwindcss.com?plugins=container-queries"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00c4d6",
+                        "background-light": "#ffffff",
+                        "background-dark": "#003E5C",
+                        "text-light": "#003E5C",
+                        "text-dark": "#ffffff",
+                        "subtle-light": "#E6F9FB",
+                        "subtle-dark": "#004F75",
+                        "border-light": "#CCEFF2",
+                        "border-dark": "#005E8A",
+                    },
+                    fontFamily: { display: ["Manrope", "sans-serif"] },
+                    borderRadius: { DEFAULT: "0.5rem", lg: "0.75rem", xl: "1rem", full: "9999px" },
+                },
+            },
+        };
+    </script>
+    <style>
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, .4);
+        }
+    </style>
+</head>
+
+
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+    <div class="relative flex min-h-screen w-full flex-col">
+
+        <!-- ============ HEADER ============ -->
+        <header
+            class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-b border-border-light/60 dark:border-border-dark/40">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="flex items-center justify-between py-3">
+                    <!-- Brand -->
+                    <a href="#" class="flex items-center gap-3 shrink-0">
+                        <img src="/static/img/logo_blue.png" alt="SLR Academy" class="h-10 sm:h-12 md:h-[52px] w-auto">
+                    </a>
+
+                    <!-- Desktop nav -->
+                    <nav class="hidden md:flex items-center gap-8">
+                        <a href="#courses"
+                            class="text-base font-medium hover:text-primary transition-colors">Kurslar</a>
+                        <a href="#about" class="text-base font-medium hover:text-primary transition-colors">Biz
+                            haqimizda</a>
+                        <a href="#contact" class="text-base font-medium hover:text-primary transition-colors">Aloqa</a>
+                    </nav>
+
+                    <!-- Desktop CTA -->
+                    <a href="#contact"
+                        class="hidden md:inline-block rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-background-dark transition-transform hover:scale-105">
+                        Kursga yozilish
+                    </a>
+
+                    <!-- Burger -->
+                    <button id="menu-btn"
+                        class="md:hidden inline-flex items-center justify-center rounded-lg p-2 text-text-light dark:text-text-dark focus:outline-none focus:ring-2 focus:ring-primary/60"
+                        aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <!-- icon: menu -->
+                        <svg id="icon-menu" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" />
+                        </svg>
+                        <!-- icon: close -->
+                        <svg id="icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile dropdown -->
+                <div id="mobile-menu"
+                    class="hidden md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out max-h-0 opacity-0">
+                    <div class="flex flex-col gap-2 pb-4 pt-2">
+                        <a href="#courses"
+                            class="rounded-lg px-3 py-2 hover:bg-subtle-light dark:hover:bg-subtle-dark">Kurslar</a>
+                        <a href="#about"
+                            class="rounded-lg px-3 py-2 hover:bg-subtle-light dark:hover:bg-subtle-dark">Biz
+                            haqimizda</a>
+                        <a href="#contact"
+                            class="rounded-lg px-3 py-2 hover:bg-subtle-light dark:hover:bg-subtle-dark">Aloqa</a>
+                        <a href="#contact"
+                            class="mt-2 rounded-lg bg-primary px-4 py-2 text-center font-bold text-background-dark">
+                            Kursga yozilish
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ============ MAIN ============ -->
+        <main class="flex-grow">
+
+            <!-- Hero -->
+            <section
+                class="relative flex h-[560px] sm:h-[600px] min-h-[480px] items-center justify-center bg-cover bg-center text-white"
+                style="background-image: linear-gradient(rgba(0,62,92,.55), rgba(0,62,92,.85)), url('/static/img/bg.jpg');">
+                <div class="container mx-auto px-4 sm:px-6 text-center">
+                    <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight text-shadow">
+                        We know how to deliver you to success!
+                    </h1>
+                    <p class="mt-3 sm:mt-4 text-base sm:text-lg text-white/90 text-shadow">
+                        Your journey to excellence in logistics starts here.
+                    </p>
+                    <a href="#contact"
+                        class="inline-block mt-6 sm:mt-8 rounded-lg bg-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-bold text-background-dark shadow-lg transition-transform hover:scale-105">
+                        Kursga yozilish
+                    </a>
+                </div>
+            </section>
+
+            <!-- Courses -->
+            <section id="courses" class="py-14 sm:py-20 bg-background-light dark:bg-background-dark">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <div class="max-w-3xl mx-auto text-center mb-10 sm:mb-12">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-light dark:text-text-dark">
+                            Kurs kimlar uchun?
+                        </h2>
+                        <p class="mt-4 text-base sm:text-lg text-text-light/80 dark:text-text-dark/80">
+                            SLR Academy sizni logistika va ta'minot zanjiri sohasida muvaffaqiyatga erishish uchun zarur
+                            bo'lgan
+                            bilim va ko'nikmalar bilan ta'minlashga mo'ljallangan turli kurslarni taklif etadi. Bizning
+                            tajribali
+                            o'qituvchilarimiz va keng qamrovli o'quv dasturimiz sizni muvaffaqiyatga puxta tayyorlaydi.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+                        <!-- Card 1 -->
+                        <div class="flex flex-col gap-4 rounded-lg border border-border-light dark:border-border-dark
+                        bg-subtle-light dark:bg-subtle-dark p-6 transition-all hover:shadow-xl hover:-translate-y-1">
+                            <div class="text-primary">
+                                <svg fill="currentColor" width="32" height="32" viewBox="0 0 256 256"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M247.42,117l-14-35A15.93,15.93,0,0,0,218.58,72H184V64a8,8,0,0,0-8-8H24A16,16,0,0,0,8,72V184a16,16,0,0,0,16,16H41a32,32,0,0,0,62,0h50a32,32,0,0,0,62,0h17a16,16,0,0,0,16-16V120A7.94,7.94,0,0,0,247.42,117ZM184,88h34.58l9.6,24H184ZM24,72H168v64H24ZM72,208a16,16,0,1,1,16-16A16,16,0,0,1,72,208Zm81-24H103a32,32,0,0,0-62,0H24V152H168v12.31A32.11,32.11,0,0,0,153,184Zm31,24a16,16,0,1,1,16-16A16,16,0,0,1,184,208Zm48-24H215a32.06,32.06,0,0,0-31-24V128h48Z" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-xl font-bold">Yoshlar uchun</h3>
+                                <p class="text-text-light/80 dark:text-text-dark/80">
+                                    Logistikaga qiziqqan, sohaga ilk qadam qo'ymoqchi bo'lgan yoshlar.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="flex flex-col gap-4 rounded-lg border border-border-light dark:border-border-dark
+                        bg-subtle-light dark:bg-subtle-dark p-6 transition-all hover:shadow-xl hover:-translate-y-1">
+                            <div class="text-primary">
+                                <svg fill="currentColor" width="32" height="32" viewBox="0 0 256 256"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-xl font-bold">Xodimlar uchun</h3>
+                                <p class="text-text-light/80 dark:text-text-dark/80">
+                                    Bilimlarni chuqurlashtirish va amaliy ko'nikmalarni mustahkamlashni istaganlar.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="flex flex-col gap-4 rounded-lg border border-border-light dark:border-border-dark
+                        bg-subtle-light dark:bg-subtle-dark p-6 transition-all hover:shadow-xl hover:-translate-y-1">
+                            <div class="text-primary">
+                                <svg fill="currentColor" width="32" height="32" viewBox="0 0 256 256"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M240,184h-8V57.9l9.67-2.08a8,8,0,1,0-3.35-15.64l-224,48A8,8,0,0,0,16,104a8.16,8.16,0,0,0,1.69-.18L24,102.47V184H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM40,99,216,61.33V184H192V128a8,8,0,0,0-8-8H72a8,8,0,0,0-8,8v56H40Zm136,53H80V136h96ZM80,168h96v16H80Z" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <h3 class="text-xl font-bold">Tadbirkorlar uchun</h3>
+                                <p class="text-text-light/80 dark:text-text-dark/80">
+                                    Kompaniyada logistika jarayonlarini tartibga solish va optimallashtirishni
+                                    istaganlar.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================== Kursdan nima olasiz ================== -->
+            <section id="benefits" class="py-24 bg-background-light dark:bg-background-dark relative overflow-hidden">
+                <div class="container mx-auto px-6 max-w-4xl">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl sm:text-5xl font-bold text-text-light dark:text-text-dark">
+                            Kursdan nima olasiz?
+                        </h2>
+                        <p class="mt-4 text-text-light/70 dark:text-text-dark/70">
+                            SLR Academy orqali siz logistika yo'lida bosqichma-bosqich rivojlanasiz.
+                        </p>
+                    </div>
+
+                    <div class="relative timeline">
+                        <!-- Вертикальная линия -->
+                        <div
+                            class="absolute left-1/2 top-0 bottom-0 w-1 bg-border-light dark:bg-border-dark transform -translate-x-1/2">
+                        </div>
+
+                        <!-- Элемент 1 -->
+                        <div class="timeline-item left">
+                            <div class="timeline-icon">
+                                <i class="bi bi-journal-bookmark"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Tizimli bilim</h3>
+                                <p>Logistikaning barcha yo'nalishlarini o'rganasiz.</p>
+                            </div>
+                        </div>
+
+                        <!-- Элемент 2 -->
+                        <div class="timeline-item right">
+                            <div class="timeline-icon">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Transport va hujjatlar ko'nikmasi</h3>
+                                <p>Transport turlarini va kerakli hujjatlarni amalda ko'rasiz.</p>
+                            </div>
+                        </div>
+
+                        <!-- Элемент 3 -->
+                        <div class="timeline-item left">
+                            <div class="timeline-icon">
+                                <i class="bi bi-clipboard-check"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Bojxona tajribasi</h3>
+                                <p>Bojxona jarayonlarini tushunasiz.</p>
+                            </div>
+                        </div>
+
+                        <!-- Элемент 4 -->
+                        <div class="timeline-item right">
+                            <div class="timeline-icon">
+                                <i class="bi bi-bar-chart-line"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Karyera rejasi</h3>
+                                <p>Kasbiy o'sish yo'lini belgilaysiz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ================== Kurs modullari ================== -->
+            <section id="modules" class="modules-section">
+                <div class="container modules-container">
+                    <div class="modules-header">
+                        <h2>Kurs modullari</h2>
+                        <p>Ushbu Xalqaro logistika kursi Logistika sohasida 16 yillik tajribaga ega mutaxassis <br>
+                            <b> G'olib Raxmatov </b>tomonidan real
+                            tajribalar asosida dasturlangan
+                        </p>
+                    </div>
+
+                    <div class="accordion">
+
+                        <!-- 1 -->
+                        <div class="accordion-item">
+                            <button class="accordion-btn">
+                                <span>1-MODUL — Logistika asoslari va ta'minot zanjiri</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>• Logistika turlari – Turli logistika yo'nalishlarining farqlari va xususiyatlari.
+                                </p>
+                                <p>• Multimodal vs intermodal – transport turlarini birlashtirishning samarali usullari.
+                                </p>
+                                <p>• Supply Chain tushunchasi – yetkazib berish zanjiridagi barcha bo'g'inlar tahlili.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 2 -->
+                        <div class="accordion-item">
+                            <button class="accordion-btn">
+                                <span>2-MODUL — Avtomobil transporti</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>• Transport turlari – Yuk tashish uchun avtomobil transport turlarining tahlili.</p>
+                                <p>• Ekspeditor, operator, mijoz rollari – Logistika jarayonidagi asosiy ishtirokchilar
+                                    vazifasi.</p>
+                                <p>• Asosiy hujjatlar – CMR, Invoice va boshqa zaruriy hujjatlarning to'ldirilishi.</p>
+                            </div>
+                        </div>
+
+                        <!-- 3 -->
+                        <div class="accordion-item">
+                            <button class="accordion-btn">
+                                <span>3-MODUL — Havo va dengiz transporti</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p><b>Havo transporti:</b> Samolyotlar orqali yuk tashishning o'ziga xos jihatlari.</p>
+                                <p> • Air Waybill to'ldirish.</p>
+                                <p> • Samolyot turlari.</p>
+                                <p> • Yuklarni joylashtirish.</p>
+                                <p><b>Dengiz transporti:</b> Kemalar yordamida konteyner tashish jarayonlari.</p>
+                                <p> • Bill of Landing (BL) hujjati.</p>
+                                <p> • Kema turlari.</p>
+                                <p> • Port operatsiyalari.</p>
+                            </div>
+                        </div>
+
+                        <!-- 4 -->
+                        <div class="accordion-item">
+                            <button class="accordion-btn">
+                                <span>4-MODUL — Temiryo'l transporti</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p><b>Buyurtma olish:</b> Mijoz bilan shartnoma tuzish va transport rejalashtirish.</p>
+                                <p><b>Vagon tanlash:</b> Yuk turiga qarab optimal vagon turini aniqlash.</p>
+                                <p><b>Railway Bill:</b> Temir yo'l transporti hujjatlarini rasmiylashtirish.</p>
+                                <p><b>Yetkazib berish:</b> Yukni manzilgacha yetkazish va topshirish.</p>
+                            </div>
+                        </div>
+
+                        <!-- 5 -->
+                        <div class="accordion-item">
+                            <button class="accordion-btn">
+                                <span>5-MODUL — Transport koridorlari va boshqaruv</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p><b>TRACECA koridori:</b> Yevropa-Kavkaz-Osiyo transport koridorining asosiy
+                                    yo'nalishlari va rivojlanishi.</p>
+                                <p><b>Belt and Road Initiative:</b> Xitoyning "Bir makon, bir yo'l" loyihasi doirasidagi
+                                    transport imkoniyatlari.</p>
+                                <p><b>Marshrut rejalashtirish:</b> Optimal transport yo'laklarini tanlash va yuk tashish
+                                    xarajatlarini optimallashtirish.</p>
+                                <p><b>Yetkazib berish muddatlari:</b> Har bir transport koridori uchun kutilayotgan vaqt
+                                    va kechikishlarni bashoratlash.</p>
+                            </div>
+                        </div>
+
+                        <!-- 6 -->
+                        <div class="accordion-item">
+                            <button class="accordion-btn">
+                                <span>6-MODUL — Savdo hujjatlari va Incoterms</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Bu modulda Invoice, Packing List, Certificate of Origin va Incoterms 2020 qoidalarini
+                                    chuqur o'rganasiz</p>
+                                <p><i class="bi bi-receipt"></i> Invoice.</p>
+                                <p><i class="bi bi-list-nested"></i> Packing List.</p>
+                                <p><i class="bi bi-patch-check-fill"></i> Certificate of Origin.</p>
+                                <p>Akkredetiv tushunchasi va savdo hujjatlaridagi muhim nuqtalar bilan tanishasiz</p>
+                            </div>
+                        </div>
+
+                        <!-- 7 -->
+                        <div class="accordion-item">
+                            <button class="accordion-btn">
+                                <span>7-MODUL — Bojxona va chegara jarayonlari</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>• Bojxona to'lovlari – O'rtacha bojxona to'lovlari YaIMga nisbatan.</p>
+                                <p>• Rasmiylashtirish vaqti – O'rtacha bojxona rasmiylashtiruvi davomiyligi.</p>
+                                <p>• Hujjatlar – Eksport-importda talab qilinadigan hujjatlar soni.</p>
+                            </div>
+                        </div>
+
+                        <!-- 8 -->
+                        <div class="accordion-item">
+                            <button class="accordion-btn">
+                                <span>8-MODUL — Karyera va ish bozori</span>
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>• Logistika kasblari – Sohaning barcha yo'nalishlari bo'yicha mavjud lavozimlar
+                                    tahlili.</p>
+                                <p>• Ish topish strategiyalari – Logistika sohasidagi ish topish yo'llari va
+                                    vositalarini o'rganish.</p>
+                                <p>• Raqamli CV va intervyu – Zamonaviy rezyume tayyorlash va suhbatlarga tayyorgarlik
+                                    ko'rish.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ================== Instructor Section 2.0 ================== -->
+            <section id="instructor" class="instructor-section">
+                <div class="instructor-container">
+                    <div class="instructor-photo">
+                        <img src="/static/img/instructor.jpg" alt="Instructor Photo">
+                    </div>
+
+                    <div class="instructor-content">
+                        <h2 class="instructor-title">Kurs rahbari</h2>
+                        <h3 class="instructor-name">G'olib Raxmatov</h3>
+                        <p class="instructor-role">SLR Shipping and Logistics, SLR Academy asoschisi</p>
+                        <blockquote class="instructor-quote">“SLR Shpping and Logistic logistika kompaniyasi hamda SLR
+                            Academy logistika akademiyasi asoschisi. Hayot Falsafasi
+                            Akademiyasi: Hayot strategiyasi, Vaqt qadri, Qadrli xodim, Shaxsiy moliya kurslari
+                            muallifi.”
+                        </blockquote>
+
+                        <div class="mentors">
+                            <h4>Mehmon mentorlar</h4>
+                            <ul class="mentor-list">
+                                <li>Toshkent Davlat Transport universiteti dotsenti</li>
+                                <li>10 yillik tajribaga ega havo transporti mutaxassisi</li>
+                                <li>3+yil tajribaga ega dengiz transporti mutaxassisi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ================== Contact Form Section ================== -->
+            <section id="apply" class="apply-section">
+                <div class="apply-container">
+                    <h2 class="apply-title">Kursga yozilish</h2>
+                    <p class="apply-subtitle">Quyidagi ma’lumotlarni to‘ldiring va biz siz bilan tez orada bog‘lanamiz.
+                    </p>
+
+                    <form id="apply-form" class="apply-form">
+                        <div class="form-group">
+                            <label for="name">To‘liq ismingiz</label>
+                            <input type="text" id="name" name="name" required placeholder="Ism Familiya">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefon raqamingiz</label>
+                            <div class="phone-wrapper">
+                                <span class="prefix">+998</span>
+                                <input type="tel" id="phone" name="phone" maxlength="9" pattern="[0-9]{9}" required
+                                    placeholder="901234567">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="course">Tanlang:</label>
+                            <select id="course" name="course" required>
+                                <option value="logistika">Xalqaro logistika kursi</option>
+                                <option value="dispetcherlik">Dispetcherlik kursi</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Elektron pochta</label>
+                            <input type="email" id="email" name="email" required placeholder="you@example.com">
+                        </div>
+
+                        <button type="submit" class="apply-btn">Yuborish</button>
+                    </form>
+                </div>
+
+                <!-- ======= Modal ======= -->
+                <div id="custom-modal" class="modal">
+                    <div class="modal-content">
+                        <span id="modal-close" class="modal-close">&times;</span>
+                        <p id="modal-message"></p>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+        </main>
+    </div>
+
+    <!-- ============ JS: Burger logic ============ -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconMenu = document.getElementById('icon-menu');
+        const iconClose = document.getElementById('icon-close');
+
+        function closeMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.style.maxHeight = '0px';
+            mobileMenu.style.opacity = '0';
+            iconMenu.classList.remove('hidden');
+            iconClose.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        function openMenu() {
+            mobileMenu.classList.remove('hidden');
+            // маленький next-tick для корректной анимации max-height
+            requestAnimationFrame(() => {
+                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                mobileMenu.style.opacity = '1';
+            });
+            iconMenu.classList.add('hidden');
+            iconClose.classList.remove('hidden');
+            menuBtn.setAttribute('aria-expanded', 'true');
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+            isOpen ? closeMenu() : openMenu();
+        });
+
+        // Закрытие по клику на ссылку мобильного меню
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A' || e.target.closest('a')) closeMenu();
+        });
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+        // Закрытие по клику вне меню/кнопки
+        document.addEventListener('click', (e) => {
+            const clickInside = mobileMenu.contains(e.target) || menuBtn.contains(e.target);
+            if (!clickInside && menuBtn.getAttribute('aria-expanded') === 'true') closeMenu();
+        });
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) entry.target.classList.add("show");
+                });
+            },
+            { threshold: 0.2 }
+        );
+
+        document.querySelectorAll(".timeline-item").forEach((el) => observer.observe(el));
+
+        document.querySelectorAll(".accordion-item").forEach((el) => observer.observe(el));
+
+        document.querySelectorAll('.accordion-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const open = item.classList.contains('open');
+
+                // Закрываем все
+                document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+
+                // Открываем текущий (если не тот же)
+                if (!open) item.classList.add('open');
+            });
+        });
+
+        // Появление фото, текста и менторов при скролле
+        const instructorObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    instructorObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.instructor-photo, .instructor-content, .mentor-list li')
+            .forEach((el) => instructorObserver.observe(el));
+
+
+        const form = document.getElementById("apply-form");
+        const modal = document.getElementById("custom-modal");
+        const modalMessage = document.getElementById("modal-message");
+        const modalClose = document.getElementById("modal-close");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const course = document.getElementById("course").value;
+
+            if (course === "dispetcherlik") {
+                modalMessage.textContent =
+                    "Afsuski bizda dispetcherlik kurslari mavjud emas. Ammo siz xalqaro logistika kursini tugatib, keng qamrovli logist bo'lishingiz mumkin!";
+            } else {
+                modalMessage.textContent =
+                    "Siz bilan mutaxassisimiz 15 daqiqa ichida bog'lanadi!";
+            }
+
+            modal.classList.add("show");
+        });
+
+        modalClose.addEventListener("click", () => {
+            modal.classList.remove("show");
+        });
+
+        // Закрытие кликом вне окна
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) modal.classList.remove("show");
+        });
+
+
+    </script>
+</body>
+
+</html>

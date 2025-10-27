@@ -1,0 +1,31 @@
+.
+├── app
+│   ├── core
+│   │   └── config.py
+│   ├── __init__.py
+│   ├── main.py
+│   ├── routers
+│   │   ├── forms.py
+│   │   ├── __init__.py
+│   │   └── pages.py
+│   ├── static
+│   │   ├── css
+│   │   │   └── style.css
+│   │   └── img
+│   │       ├── bg.jpg
+│   │       ├── instructor.jpg
+│   │       └── logo_blue.png
+│   ├── telegram_bot.py
+│   └── templates
+│       ├── about.html
+│       ├── base.html
+│       ├── contact.html
+│       ├── courses.html
+│       └── index.html
+├── .env
+├── README.md
+├── requirements.txt
+├── run.sh
+└── structure.txt
+
+8 directories, 21 files

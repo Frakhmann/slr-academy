@@ -1,0 +1,830 @@
+/* ====== Base palette (поддержит единый стиль) ====== */
+:root {
+    --primary: #00c4d6;
+    --text-light: #003E5C;
+    --text-dark: #ffffff;
+    --bg-light: #ffffff;
+    --bg-dark: #003E5C;
+    --subtle-light: #E6F9FB;
+    --subtle-dark: #004F75;
+    --border-light: #CCEFF2;
+    --border-dark: #005E8A;
+}
+
+/* ===================================================
+   BENEFITS (если используешь старые карточки)
+   =================================================== */
+
+#benefits {
+    background-color: #eef9fe;
+}
+
+.benefit-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    background: var(--subtle-light);
+    padding: 1.5rem;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+body.dark .benefit-card {
+    border-color: var(--border-dark);
+    background: var(--subtle-dark);
+}
+
+.benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+}
+
+.benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 10px;
+    background: var(--bg-light);
+}
+
+body.dark .benefit-icon {
+    background: var(--bg-dark);
+}
+
+.benefit-title {
+    font-size: 1.125rem;
+    /* text-lg */
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+body.dark .benefit-title {
+    color: var(--text-dark);
+}
+
+.benefit-text {
+    margin-top: .25rem;
+    font-size: .875rem;
+    /* text-sm */
+    color: rgba(0, 62, 92, .8);
+    line-height: 1.5;
+}
+
+body.dark .benefit-text {
+    color: rgba(255, 255, 255, .8);
+}
+
+@media (min-width:640px) {
+    .benefit-title {
+        font-size: 1.25rem;
+    }
+
+    /* sm:text-xl */
+    .benefit-text {
+        font-size: 1rem;
+    }
+
+    /* sm:text-base */
+}
+
+@media (max-width:640px) {
+    .benefit-card {
+        padding: 1rem;
+    }
+
+    .benefit-icon {
+        padding: .75rem;
+    }
+}
+
+/* ===================================================
+   TIMELINE — Kursdan nima olasiz?
+   ДЕСКТОП: иконка у центральной линии, текст снаружи
+   МОБИЛКА: одна колонка; иконки у краёв экрана; пунктир
+   =================================================== */
+
+/* Контейнер и центральная линия (desktop) */
+.timeline {
+    position: relative;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 50%;
+    width: 2px;
+    background: rgba(0, 196, 214, .35);
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Общие параметры элемента (desktop) */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    transition: transform .7s ease, opacity .7s ease;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Левая сторона — ТЕКСТ → ИКОНКА (иконка у линии) */
+.timeline-item.left {
+    left: 0;
+    justify-content: flex-end;
+    text-align: right;
+    flex-direction: row;
+    /* текст, потом иконка */
+}
+
+.timeline-item.left .timeline-content {
+    order: 1;
+}
+
+.timeline-item.left .timeline-icon {
+    order: 2;
+    margin-left: 1rem;
+    transform: translateX(50%);
+    /* прижимаем к центральной линии */
+}
+
+/* Правая сторона — ИКОНКА → ТЕКСТ */
+.timeline-item.right {
+    left: 50%;
+    justify-content: flex-start;
+    text-align: left;
+    flex-direction: row;
+    /* иконка, потом текст */
+}
+
+.timeline-item.right .timeline-icon {
+    order: 1;
+    margin-right: 1rem;
+    transform: translateX(-50%);
+    /* прижимаем к центральной линии */
+}
+
+.timeline-item.right .timeline-content {
+    order: 2;
+}
+
+/* Иконка (круг + hover) */
+.timeline-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    z-index: 2;
+    transition: background .25s ease, color .25s ease, transform .2s ease;
+}
+
+.timeline-item:hover .timeline-icon {
+    background: var(--primary);
+    color: #fff;
+    transform: scale(1.03);
+    /* небольшой, аккуратный */
+}
+
+/* Текст */
+.timeline-content h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: .25rem;
+}
+
+body.dark .timeline-content h3 {
+    color: var(--text-dark);
+}
+
+.timeline-content p {
+    font-size: .95rem;
+    line-height: 1.5;
+    color: rgba(0, 62, 92, .8);
+}
+
+body.dark .timeline-content p {
+    color: rgba(255, 255, 255, .85);
+}
+
+/* -------------------- MOBILE -------------------- */
+@media (max-width: 768px) {
+
+    /* Убираем центральную линию */
+    .timeline::before,
+    .timeline>.absolute.left-1\/2 {
+        display: none !important;
+    }
+
+    .timeline {
+        width: 100vw;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        padding-inline: 16px;
+    }
+
+    /* Каждый элемент */
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 0;
+        position: relative;
+    }
+
+    /* Пунктир между элементами */
+    .timeline-item:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        bottom: 0;
+        border-bottom: 1px dashed rgba(0, 196, 214, 0.4);
+    }
+
+    /* Иконки — строго по правому краю */
+    .timeline-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 2px solid #00c4d6;
+        color: #00c4d6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-right: 16px;
+        margin-left: auto;
+        /* выталкивает иконку к правому краю */
+    }
+
+    /* Текст — строго по левой стороне */
+    .timeline-content {
+        flex: 1;
+        text-align: left;
+        max-width: 75%;
+    }
+
+    /* Выровнять все одинаково */
+    .timeline-item.left,
+    .timeline-item.right {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    /* Стили текста */
+    .timeline-content h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: #003e5c;
+    }
+
+    .timeline-content p {
+        font-size: 0.875rem;
+        line-height: 1.4;
+        color: rgba(0, 62, 92, 0.8);
+    }
+}
+
+
+/* ====================== Kurs Modullari ====================== */
+/* ====================== Kurs Modullari ====================== */
+/* ====================== Kurs Modullari ====================== */
+.modules-section {
+    position: relative;
+    z-index: 0;
+    background: #ffffff;
+    color: var(--text-light);
+    padding: 5rem 1rem;
+    overflow: hidden;
+}
+
+/* Контейнер */
+.modules-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Мягкое свечение из центра */
+.modules-section::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1200px;
+    height: 1200px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at center,
+            rgba(0, 196, 214, 0.25) 0%,
+            rgba(0, 196, 214, 0.08) 35%,
+            rgba(255, 255, 255, 1) 80%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* SVG-декор */
+.modules-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/static/img/decor_logistics.svg") center/contain no-repeat;
+    opacity: 0.08;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Заголовок */
+.modules-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.modules-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #003E5C;
+    margin-bottom: .5rem;
+}
+
+.modules-header p {
+    font-size: 1.1rem;
+    color: rgba(0, 62, 92, .75);
+}
+
+/* ================= ACCORDION ================= */
+.accordion {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    margin-bottom: 1.1rem;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .04);
+    transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+body.dark .accordion-item {
+    background: var(--subtle-dark);
+    border-color: var(--border-dark);
+}
+
+.accordion-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.accordion-item.open {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .1);
+    border-color: var(--primary);
+}
+
+/* ================= КНОПКА ================= */
+.accordion-btn {
+    width: 100%;
+    background: #e6f9fb;
+    border: none;
+    padding: 1.35rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #003E5C;
+    /* Фирменный текст */
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all .25s ease;
+    border-radius: 14px;
+}
+
+body.dark .accordion-btn {
+    color: #ffffff;
+}
+
+.accordion-btn:hover {
+    background: rgba(0, 196, 214, 0.1);
+    color: #003E5C;
+    box-shadow: 0 4px 14px rgba(0, 196, 214, 0.15);
+}
+
+/* Иконка */
+.accordion-btn i {
+    transition: transform .35s ease, color .3s ease;
+    color: #003E5C;
+    font-size: 1.2rem;
+}
+
+body.dark .accordion-btn i {
+    color: var(--primary);
+}
+
+.accordion-btn:hover i {
+    color: #003E5C;
+    transform: translateY(1px);
+}
+
+.accordion-item.open .accordion-btn i {
+    transform: rotate(180deg);
+    color: var(--primary);
+}
+
+/* ================= КОНТЕНТ ================= */
+.accordion-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 1.5rem;
+    color: rgba(0, 62, 92, .85);
+    transition: all .4s ease;
+}
+
+body.dark .accordion-content {
+    color: rgba(255, 255, 255, .85);
+}
+
+.accordion-item.open .accordion-content {
+    max-height: 320px;
+    opacity: 1;
+    padding: 0 1.5rem 1.25rem;
+}
+
+.accordion-content p {
+    margin: .4rem 0;
+    line-height: 1.6;
+    font-size: .97rem;
+}
+
+/* ================= Мобильная адаптация ================= */
+@media (max-width: 640px) {
+    .modules-header h2 {
+        font-size: 1.9rem;
+    }
+
+    .modules-header p {
+        font-size: .95rem;
+    }
+
+    .accordion-btn {
+        font-size: 1rem;
+        padding: 1rem 1.25rem;
+    }
+
+    .accordion-content p {
+        font-size: .88rem;
+    }
+}
+
+
+
+/* =================== Instructor Section 2.0 =================== */
+.instructor-section {
+    position: relative;
+    padding: 6rem 1rem;
+    background: linear-gradient(135deg, #f5fdff 0%, #e9f8fa 50%, #dff4f6 100%);
+    overflow: hidden;
+}
+
+/* Контейнер */
+.instructor-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+/* Фото */
+.instructor-photo {
+    flex: 1 1 480px;
+    max-width: 455px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0, 62, 92, 0.25);
+    transform: translateY(40px);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.instructor-photo.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.instructor-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.instructor-photo:hover img {
+    transform: scale(1.05);
+}
+
+/* Контент */
+.instructor-content {
+    flex: 1 1 460px;
+    color: #003E5C;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.instructor-content.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.instructor-title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: var(--primary);
+    letter-spacing: 1px;
+    margin-bottom: .5rem;
+}
+
+.instructor-name {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: .4rem;
+}
+
+.instructor-role {
+    font-size: 1.05rem;
+    color: rgba(0, 62, 92, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+.instructor-quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(0, 62, 92, 0.7);
+    border-left: 4px solid var(--primary);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Mentorlar */
+.mentors h4 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: .8rem;
+}
+
+.mentor-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.mentor-list li {
+    background: rgba(0, 196, 214, 0.1);
+    border: 1px solid rgba(0, 196, 214, 0.2);
+    border-radius: 10px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.6s ease;
+}
+
+.mentor-list li.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Световой эффект */
+.instructor-section::before {
+    content: "";
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle at center, rgba(0, 196, 214, 0.15) 0%, transparent 70%);
+    top: 60%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Адаптив */
+@media (max-width: 960px) {
+    .instructor-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .instructor-photo {
+        width: 100%;
+        max-width: 90%;
+        height: auto;
+    }
+
+    .instructor-content {
+        max-width: 90%;
+    }
+
+    .instructor-quote {
+        border-left: none;
+        border-top: 3px solid var(--primary);
+        padding-top: 1rem;
+        margin-top: 1.5rem;
+    }
+}
+
+
+/* ============ Apply Form Section ============ */
+.apply-section {
+    position: relative;
+    padding: 6rem 1rem;
+    background: linear-gradient(135deg, #f8fdff 0%, #ebf9fb 60%, #e3f7f9 100%);
+    text-align: center;
+    overflow: hidden;
+}
+
+.apply-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 196, 214, 0.2);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: 0 12px 40px rgba(0, 62, 92, 0.08);
+}
+
+.apply-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #003E5C;
+}
+
+.apply-subtitle {
+    color: rgba(0, 62, 92, 0.75);
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+}
+
+/* Form fields */
+.apply-form .form-group {
+    text-align: left;
+    margin-bottom: 1.4rem;
+}
+
+.apply-form label {
+    display: block;
+    font-weight: 600;
+    color: #003E5C;
+    margin-bottom: 0.4rem;
+}
+
+.apply-form input,
+.apply-form select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 62, 92, 0.2);
+    font-size: 1rem;
+    outline: none;
+    color: #003E5C;
+    background: rgba(255, 255, 255, 0.8);
+    transition: border-color .3s ease, box-shadow .3s ease;
+}
+
+.apply-form input:focus,
+.apply-form select:focus {
+    border-color: #00C4D6;
+    box-shadow: 0 0 0 3px rgba(0, 196, 214, 0.15);
+}
+
+/* phone wrapper */
+.phone-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 62, 92, 0.2);
+    overflow: hidden;
+}
+
+.phone-wrapper .prefix {
+    background: #00C4D6;
+    color: white;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.phone-wrapper input {
+    border: none;
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    font-size: 1rem;
+    outline: none;
+    color: #003E5C;
+}
+
+/* Button */
+.apply-btn {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background: #00C4D6;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.apply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 196, 214, 0.3);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 62, 92, 0.45);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #fff;
+    color: #003E5C;
+    padding: 2rem 2.5rem;
+    border-radius: 18px;
+    max-width: 400px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    transform: scale(0.8);
+    opacity: 0;
+    transition: all .4s ease;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.4rem;
+    color: #00C4D6;
+    cursor: pointer;
+    transition: color .3s ease;
+}
+
+.modal-close:hover {
+    color: #003E5C;
+}
